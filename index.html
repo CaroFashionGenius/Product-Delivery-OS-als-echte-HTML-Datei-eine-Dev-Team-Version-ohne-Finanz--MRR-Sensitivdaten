@@ -1,3 +1,21 @@
+<script>
+const PASSWORD = "FG2026!";
+
+const entered = prompt("Enter password");
+
+if (entered !== PASSWORD) {
+  document.body.innerHTML = `
+    <div style="
+      font-family: Arial;
+      padding: 50px;
+      text-align:center;
+      font-size:24px;">
+      Access Denied
+    </div>
+  `;
+  throw new Error("Unauthorized");
+}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
