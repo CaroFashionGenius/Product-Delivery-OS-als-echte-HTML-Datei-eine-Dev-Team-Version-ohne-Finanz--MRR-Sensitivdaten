@@ -1,24 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fashion Genius — Developer Product Delivery OS v2 Visual</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Genius Product Delivery OS — Developer Team</title>
 <style>
-:root{--bg:#050505;--panel:#101010;--panel2:#171717;--line:#2b2b2b;--text:#f4f4ef;--muted:#9a9a9a;--lime:#d7ff35;--amber:#ffbf4a;--red:#ff5d5d;--blue:#6ab8ff;--green:#61d394;--radius:22px}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#182500 0,#050505 32%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}.page{max-width:1320px;margin:0 auto;padding:34px 22px 70px}.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:24px}.brand{font-family:Menlo,monospace;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);font-size:12px}.brand b{color:var(--lime)}.meta{text-align:right;color:var(--muted);font-size:12px}h1{font-size:clamp(42px,7vw,84px);letter-spacing:-.07em;line-height:.92;margin:44px 0 18px;max-width:1050px}.lime{color:var(--lime)}.lead{font-size:20px;color:#b5b5b5;max-width:860px}.nav{display:flex;flex-wrap:wrap;gap:10px;margin:32px 0}.pill{border:1px solid var(--line);border-radius:999px;padding:10px 14px;background:#0b0b0b;color:#ccc;font-size:13px}.pill.active{background:var(--lime);color:#050505;border-color:var(--lime);font-weight:800}.section{margin-top:34px}.title{display:flex;align-items:center;gap:16px;color:var(--lime);font-family:Menlo,monospace;text-transform:uppercase;letter-spacing:.18em;font-weight:800;font-size:12px;margin-bottom:16px}.title:after{content:"";height:1px;background:var(--line);flex:1}.grid{display:grid;gap:14px}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:22px}.card h3{margin:0 0 9px;font-size:21px;letter-spacing:-.03em}.card p,.card li{color:#a9a9a9}.kicker{font-family:Menlo,monospace;font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--lime);font-weight:800;margin-bottom:12px}.flow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}.node{flex:1;min-width:135px;border:1px solid rgba(215,255,53,.28);background:rgba(215,255,53,.08);border-radius:18px;padding:16px;text-align:center}.node b{display:block;color:var(--lime);margin-bottom:5px}.arrow{display:flex;align-items:center;color:var(--lime);font-size:28px;font-weight:900}.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.phase{position:relative;overflow:hidden}.phase:before{content:"";position:absolute;left:0;top:0;right:0;height:5px;background:var(--lime)}.status{display:inline-block;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;margin-top:12px}.done{background:rgba(97,211,148,.14);color:var(--green)}.active{background:rgba(215,255,53,.14);color:var(--lime)}.next{background:rgba(255,191,74,.14);color:var(--amber)}.locked{background:rgba(255,93,93,.14);color:var(--red)}table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);background:#151515}td{color:#d4d4d4}.priority{font-weight:900;color:var(--lime)}.visual-lock{display:flex;gap:14px;align-items:center}.lock{font-size:34px}.progress{height:10px;background:#2a2a2a;border-radius:999px;overflow:hidden;margin-top:10px}.bar{height:100%;background:var(--lime)}.small{font-size:12px;color:var(--muted)}.quality{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.qstep{background:#0d0d0d;border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}.qstep strong{color:var(--lime)}.footer{border-top:1px solid var(--line);margin-top:50px;padding-top:22px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:20px}@media(max-width:900px){.g2,.g3,.g4,.timeline,.quality{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-content:center}.top,.footer{flex-direction:column}.meta{text-align:left}}
+:root{
+  --bg:#070707; --panel:#111; --panel2:#171717; --line:#2c2c2c;
+  --text:#f5f5f0; --muted:#9a9a9a; --lime:#c8ff00; --amber:#ffcc66; --red:#ff6b6b; --blue:#69b7ff;
+  --radius:22px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.45}
+.app{max-width:1280px;margin:0 auto;padding:28px}
+header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px}
+.kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);font-weight:800}
+h1{font-size:clamp(34px,5vw,68px);letter-spacing:-.06em;line-height:.95;margin:10px 0 12px}
+h2{font-size:28px;letter-spacing:-.04em;margin:0 0 16px}
+h3{margin:0 0 10px;font-size:18px}
+p{color:var(--muted);margin:0}
+.grid{display:grid;gap:14px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:12px;color:#d9d9d9;background:#0d0d0d;margin:2px}
+.badge.lime{background:rgba(200,255,0,.12);border-color:rgba(200,255,0,.35);color:var(--lime)}
+.badge.red{background:rgba(255,107,107,.12);border-color:rgba(255,107,107,.35);color:var(--red)}
+.badge.amber{background:rgba(255,204,102,.12);border-color:rgba(255,204,102,.35);color:var(--amber)}
+.section{margin:28px 0}
+.flow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.flow .step{background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.22);border-radius:16px;padding:13px 15px;font-weight:700}
+.arrow{color:var(--lime);font-size:22px;font-weight:900}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}
+th{color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:#141414}
+tr:last-child td{border-bottom:0}
+.progress{height:9px;background:#262626;border-radius:99px;overflow:hidden;margin-top:10px}
+.progress span{display:block;height:100%;background:var(--lime);border-radius:99px}
+.btn{border:1px solid rgba(200,255,0,.4);background:rgba(200,255,0,.12);color:var(--lime);border-radius:14px;padding:10px 14px;font-weight:800;cursor:pointer}
+.btn.secondary{border-color:var(--line);background:#121212;color:#ddd}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;z-index:9999;padding:18px}
+.modal{width:min(920px,96vw);max-height:92vh;overflow:auto;background:#0b0b0b;border:1px solid rgba(200,255,0,.35);border-radius:28px;padding:28px;box-shadow:0 30px 120px rgba(0,0,0,.7)}
+.modal h2{font-size:38px;color:var(--lime);margin-bottom:10px}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.modal-card{background:#141414;border:1px solid var(--line);border-radius:18px;padding:18px}
+.modal-actions{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.small{font-size:12px;color:var(--muted)}
+.locked{opacity:.75}
+.footer{border-top:1px solid var(--line);margin-top:34px;padding-top:18px;color:var(--muted);font-size:12px}
+@media(max-width:900px){.grid-3,.grid-4,.modal-grid{grid-template-columns:1fr} header{flex-direction:column}}
 </style>
 </head>
-<body><main class="page">
-<header class="top"><div><div class="brand"><b>Fashion Genius</b> / Product Delivery OS</div><div class="small">Developer Team Edition · Visual Guide · v2.1</div></div><div class="meta">Internal · No Financial Data<br>Mobile-first Web · PMF before Platform</div></header>
-<section><h1>Build the <span class="lime">right product</span>, in the right order.</h1><p class="lead">This dashboard is the shared operating system for the development team: why we build, what we build next, how we track quality, and which ideas are parked until the right milestone.</p></section>
-<nav class="nav"><span class="pill active">Strategic Briefing</span><span class="pill">Roadmap</span><span class="pill">Sprint Board</span><span class="pill">Backlog</span><span class="pill">QA Center</span><span class="pill">Bug Tracker</span><span class="pill">Time Tracking</span><span class="pill">Decision Log</span><span class="pill">Innovation Vault</span><span class="pill">KPI Dashboard</span></nav>
-<section class="section"><div class="title">01 — Product Delivery Flow</div><div class="card"><div class="flow"><div class="node"><b>Vision</b><span>Fashion commerce layer</span></div><div class="arrow">→</div><div class="node"><b>Roadmap</b><span>Prioritized phases</span></div><div class="arrow">→</div><div class="node"><b>Sprint</b><span>Active build scope</span></div><div class="arrow">→</div><div class="node"><b>QA</b><span>Acceptance testing</span></div><div class="arrow">→</div><div class="node"><b>Release</b><span>Production-ready</span></div><div class="arrow">→</div><div class="node"><b>Feedback</b><span>Improve next sprint</span></div></div></div></section>
-<section class="section"><div class="title">02 — Current Development Rules</div><div class="grid g4"><div class="card"><div class="kicker">Rule 01</div><h3>Mobile-first Web UX</h3><p>Responsive browser experience for iPhone, Android, tablet and desktop is active and critical.</p><span class="status active">ACTIVE</span></div><div class="card"><div class="kicker">Rule 02</div><h3>Native App Parked</h3><p>No iOS/Android native app before PMF validation and usage evidence.</p><span class="status locked">LOCKED</span></div><div class="card"><div class="kicker">Rule 03</div><h3>Monetization First</h3><p>Subscription, usage limits and paid-plan logic come before platform complexity.</p><span class="status active">ACTIVE</span></div><div class="card"><div class="kicker">Rule 04</div><h3>PMF before Platform</h3><p>Advanced marketplace, identity and automation features remain in the vault until validated.</p><span class="status next">GUIDING PRINCIPLE</span></div></div></section>
-<section class="section"><div class="title">03 — Product Roadmap</div><div class="timeline"><div class="card phase"><h3>Phase 1</h3><p>Creator Studio Web MVP: auth, upload, VTO, collections, results.</p><span class="status done">COMPLETE</span></div><div class="card phase"><h3>Phase 1.5</h3><p>Mobile responsive web experience + monetization layer.</p><span class="status active">ACTIVE</span></div><div class="card phase"><h3>Phase 2</h3><p>Creator onboarding, sharing, saved looks and retention foundations.</p><span class="status next">NEXT</span></div><div class="card phase"><h3>Phase 3</h3><p>Retailer flywheel, affiliate links and creator-to-retailer signals.</p><span class="status next">PLANNED</span></div><div class="card phase"><h3>Phase 4+</h3><p>Native app, marketplace and Fashion OS capabilities.</p><span class="status locked">LOCKED</span></div></div></section>
-<section class="section"><div class="title">04 — Active Sprint Board</div><table><thead><tr><th>Feature</th><th>Owner</th><th>Estimate</th><th>Status</th><th>QA</th><th>Priority</th></tr></thead><tbody><tr><td>Mobile Responsive UX Audit</td><td>Developer</td><td>6h</td><td>Not started</td><td>Pending</td><td class="priority">Critical</td></tr><tr><td>Mobile Upload + Try-On Flow</td><td>Developer</td><td>10h</td><td>Not started</td><td>Pending</td><td class="priority">Critical</td></tr><tr><td>Mobile Results + Export Flow</td><td>Developer</td><td>8h</td><td>Not started</td><td>Pending</td><td class="priority">Critical</td></tr><tr><td>Subscription Plans + Usage Limits</td><td>Developer</td><td>12h</td><td>Not started</td><td>Pending</td><td class="priority">Critical</td></tr><tr><td>Watermark Logic</td><td>Developer</td><td>5h</td><td>Not started</td><td>Pending</td><td class="priority">Critical</td></tr></tbody></table></section>
-<section class="section"><div class="title">05 — Quality Gate</div><div class="quality"><div class="qstep"><strong>Backlog</strong><br><span class="small">Idea captured</span></div><div class="qstep"><strong>Ready</strong><br><span class="small">Scope clear</span></div><div class="qstep"><strong>Sprint</strong><br><span class="small">Assigned</span></div><div class="qstep"><strong>Development</strong><br><span class="small">Built</span></div><div class="qstep"><strong>QA</strong><br><span class="small">Tested</span></div><div class="qstep"><strong>Approved</strong><br><span class="small">Accepted</span></div><div class="qstep"><strong>Release</strong><br><span class="small">Production</span></div></div></section>
-<section class="section"><div class="title">06 — Innovation Vault</div><div class="grid g3"><div class="card"><div class="visual-lock"><div class="lock">🔒</div><div><h3>Native Mobile App</h3><p>Parked. Build only after PMF validation and strong mobile usage data.</p></div></div></div><div class="card"><div class="visual-lock"><div class="lock">🔒</div><div><h3>Creator Marketplace</h3><p>Future capability. Requires active creator and retailer network.</p></div></div></div><div class="card"><div class="visual-lock"><div class="lock">🔒</div><div><h3>Fashion Identity Layer</h3><p>Long-term infrastructure vision. Not current sprint scope.</p></div></div></div></div></section>
-<section class="section"><div class="title">07 — Time & KPI Tracking</div><div class="grid g4"><div class="card"><h3>Planned Sprint Hours</h3><p>41h</p><div class="progress"><div class="bar" style="width:70%"></div></div></div><div class="card"><h3>Actual Hours</h3><p>To be tracked</p><div class="progress"><div class="bar" style="width:0%"></div></div></div><div class="card"><h3>QA Status</h3><p>Pending</p><div class="progress"><div class="bar" style="width:15%"></div></div></div><div class="card"><h3>Release Readiness</h3><p>Not ready</p><div class="progress"><div class="bar" style="width:20%"></div></div></div></div></section>
-<section class="section"><div class="title">08 — Decision Log</div><table><thead><tr><th>Date</th><th>Decision</th><th>Reason</th><th>Status</th></tr></thead><tbody><tr><td>June 2026</td><td>Native mobile app postponed</td><td>Mobile responsive web is sufficient for PMF validation.</td><td>Approved</td></tr><tr><td>June 2026</td><td>Monetization before complexity</td><td>Validate first paid creator usage before platform expansion.</td><td>Approved</td></tr><tr><td>June 2026</td><td>Innovation ideas remain visible but locked</td><td>Encourage team thinking without scope creep.</td><td>Approved</td></tr></tbody></table></section>
-<footer class="footer"><div>Fashion Genius Technology Lab AG · Internal Developer OS</div><div>v2.1 Visual · No sensitive financial data</div></footer>
-</main></body></html>
+<body data-guide-key="fgDevGuideV1">
+<div id="welcomeGuide" class="modal-backdrop">
+  <div class="modal">
+    <div class="kicker">Welcome Guide · Developer Team</div>
+    <h2>How to use this Product Delivery OS</h2>
+    <p>This dashboard is the shared operating system for building Fashion Genius Creator Studio. It explains what we are building, why we are building it, what is active now, and what is intentionally parked.</p>
+    <div class="modal-grid">
+      <div class="modal-card"><h3>1. Start with the Strategic Briefing</h3><p>Understand the current product focus before starting new work: creator adoption, monetization, mobile web usability and PMF validation.</p></div>
+      <div class="modal-card"><h3>2. Work from the Sprint Board</h3><p>Use the sprint board to see current priorities, owners, status, estimates and QA stage. Do not start parked items without approval.</p></div>
+      <div class="modal-card"><h3>3. Follow the Quality Gate</h3><p>Every feature must move through development, QA, bug review and release readiness before it is considered done.</p></div>
+      <div class="modal-card"><h3>4. Capture ideas in the Innovation Vault</h3><p>Future ideas are welcome. They are documented, not lost. But they stay parked until the required milestone is reached.</p></div>
+    </div>
+    <div class="card">
+      <h3>Current Development Rule</h3>
+      <div><span class="badge lime">Mobile Responsive Web App = ACTIVE</span><span class="badge red">Native Mobile App = PARKED</span><span class="badge amber">Monetization before complexity</span><span class="badge amber">PMF before platform expansion</span></div>
+    </div>
+    <div class="modal-actions">
+      <label class="small"><input type="checkbox" id="dontShowGuide"> Don’t show this guide again on this browser</label>
+      <button class="btn" onclick="closeGuide('fgDevGuideV1')">Got it — start working</button>
+    </div>
+  </div>
+</div>
+
+<div class="app">
+<header>
+  <div><div class="kicker">Fashion Genius · Product Delivery OS</div><h1>Developer Team Workspace</h1><p>Shared execution dashboard for sprint delivery, QA, backlog and release readiness.</p></div>
+  <button class="btn secondary" onclick="resetGuide('fgDevGuideV1')">Open Guide</button>
+</header>
+
+<section class="section grid grid-3">
+  <div class="card"><h3>Current Objective</h3><p>Validate creator traction and monetization with a mobile-first responsive web experience.</p></div>
+  <div class="card"><h3>Active Focus</h3><span class="badge lime">Mobile Web UX</span><span class="badge lime">Payment Layer</span><span class="badge lime">Creator Onboarding</span></div>
+  <div class="card"><h3>Not Active Now</h3><span class="badge red">Native iOS App</span><span class="badge red">Native Android App</span><span class="badge red">Marketplace</span></div>
+</section>
+
+<section class="section card">
+  <div class="kicker">Product Delivery Flow</div>
+  <div class="flow">
+    <div class="step">Strategic Briefing</div><div class="arrow">→</div><div class="step">Roadmap</div><div class="arrow">→</div><div class="step">Sprint Board</div><div class="arrow">→</div><div class="step">Development</div><div class="arrow">→</div><div class="step">QA</div><div class="arrow">→</div><div class="step">Release</div><div class="arrow">→</div><div class="step">Feedback</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Product Roadmap</h2>
+  <div class="grid grid-4">
+    <div class="card"><span class="badge lime">Complete</span><h3>Phase 1 · Web MVP</h3><p>Auth, upload, VTO generation, libraries, results and basic infrastructure.</p></div>
+    <div class="card"><span class="badge lime">Active</span><h3>Phase 1.5 · Mobile Web + Monetization</h3><p>Responsive mobile UX, Stripe, plans, credits, usage limits and watermark logic.</p></div>
+    <div class="card"><span class="badge amber">Next</span><h3>Phase 2 · Creator Growth</h3><p>Onboarding, profiles, saved looks, social export and referral flows.</p></div>
+    <div class="card locked"><span class="badge red">Locked</span><h3>Phase 3+ · Platform Expansion</h3><p>Native mobile, marketplace, advanced analytics and Fashion OS.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Active Sprint Board</h2>
+  <table><thead><tr><th>Feature</th><th>Owner</th><th>Priority</th><th>Estimate</th><th>Status</th><th>QA</th></tr></thead>
+  <tbody>
+    <tr><td>Mobile Responsive UX Audit</td><td>Developer Team</td><td>Critical</td><td>6h</td><td>Ready</td><td>Pending</td></tr>
+    <tr><td>Mobile Upload Flow</td><td>Developer Team</td><td>Critical</td><td>8h</td><td>Ready</td><td>Pending</td></tr>
+    <tr><td>Stripe Integration</td><td>Amir / Backend</td><td>Critical</td><td>12h</td><td>Ready</td><td>Pending</td></tr>
+    <tr><td>Usage Limits + Watermark Logic</td><td>Backend + Frontend</td><td>Critical</td><td>10h</td><td>Ready</td><td>Pending</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section grid grid-3">
+  <div class="card"><h3>QA Gate</h3><p>Backlog → Ready → Sprint → Development → QA → Approved → Release</p><div class="progress"><span style="width:35%"></span></div></div>
+  <div class="card"><h3>Decision Log</h3><p>Native mobile app is parked until PMF is validated. Mobile responsive web app is active now.</p></div>
+  <div class="card"><h3>KPI View</h3><p>Track registered users, active creators, generated VTOs, exports, error rate and uptime. No revenue data in this version.</p></div>
+</section>
+
+<section class="section">
+  <h2>Innovation Vault</h2>
+  <table><thead><tr><th>Idea</th><th>Status</th><th>Unlock Condition</th></tr></thead><tbody>
+    <tr><td>Native Mobile App</td><td>Locked</td><td>PMF validated + product lead approval</td></tr>
+    <tr><td>Creator Marketplace</td><td>Locked</td><td>Creator demand + retailer demand validated</td></tr>
+    <tr><td>Fashion Identity Layer</td><td>Vision</td><td>Retailer traction + repeat usage</td></tr>
+    <tr><td>Advanced AI Editing</td><td>Future</td><td>After monetization and mobile web core are stable</td></tr>
+  </tbody></table>
+</section>
+
+<div class="footer">Fashion Genius Technology Lab AG · Internal Developer Workspace · No financial or fundraising data included.</div>
+</div>
+<script>
+function closeGuide(key){
+  if(document.getElementById('dontShowGuide')?.checked){ localStorage.setItem(key,'hidden'); }
+  document.getElementById('welcomeGuide').style.display='none';
+}
+function resetGuide(key){
+  localStorage.removeItem(key);
+  document.getElementById('welcomeGuide').style.display='flex';
+}
+window.addEventListener('DOMContentLoaded',()=>{
+  const key=document.body.dataset.guideKey;
+  if(localStorage.getItem(key)==='hidden'){ document.getElementById('welcomeGuide').style.display='none'; }
+});
+</script>
+</body></html>
