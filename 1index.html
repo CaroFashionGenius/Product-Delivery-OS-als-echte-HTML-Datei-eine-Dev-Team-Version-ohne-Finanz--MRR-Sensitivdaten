@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fashion Genius · Creator Studio Delivery OS · Dev Team Edition</title>
+<style>
+:root{
+  --bg:#050505;
+  --panel:#111111;
+  --panel2:#151515;
+  --line:rgba(255,255,255,.12);
+  --text:#f6f4ef;
+  --muted:#9f9f9f;
+  --lime:#cfff2f;
+  --lime2:#b9f700;
+  --danger:#ff5b68;
+  --amber:#ffc857;
+  --shadow:0 30px 80px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 88% 0%, rgba(207,255,47,.13), transparent 26%),
+    radial-gradient(circle at 12% 8%, rgba(207,255,47,.045), transparent 20%),
+    linear-gradient(180deg,#070707 0%,#030303 100%);
+  color:var(--text);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+.wrap{max-width:1460px;margin:0 auto;padding:28px 34px 60px}
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:24px;
+}
+.eyebrow{
+  color:var(--lime);
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  font-weight:900;
+  font-size:11px;
+  margin-bottom:10px;
+}
+h1{
+  margin:0;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.88;
+  letter-spacing:-.075em;
+  font-weight:950;
+}
+h1 .lime{color:var(--lime)}
+.subtitle{
+  max-width:790px;
+  color:#aaa;
+  font-size:15px;
+  line-height:1.5;
+  margin-top:14px;
+}
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+button,.fileBtn{
+  border:1px solid var(--line);
+  background:#121212;
+  color:#fff;
+  padding:12px 16px;
+  border-radius:16px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,.22);
+}
+button.primary{background:var(--lime);color:#050505;border-color:var(--lime)}
+button.danger{border-color:rgba(255,91,104,.45);color:#ff7780;background:rgba(255,91,104,.08)}
+.fileBtn input{display:none}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 13px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:#bdbdbd;
+  background:#111;
+  font-size:12px;
+}
+.pill.active{background:var(--lime);color:#050505;border-color:var(--lime);font-weight:900}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:12px;
+  margin:20px 0 20px;
+}
+.stat{
+  background:linear-gradient(180deg,var(--panel2),#0d0d0d);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px 18px;
+  min-height:84px;
+}
+.stat .label{
+  color:#999;
+  font-size:10px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  font-weight:900;
+}
+.stat .num{
+  font-size:30px;
+  margin-top:10px;
+  font-weight:950;
+}
+.tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:18px 0;
+}
+.tab{
+  border-radius:999px;
+  padding:11px 18px;
+  background:#111;
+  color:#eee;
+  border:1px solid var(--line);
+}
+.tab.active{
+  background:var(--lime);
+  color:#030303;
+  border-color:var(--lime);
+}
+.notice{
+  border-left:5px solid var(--lime);
+  background:rgba(207,255,47,.08);
+  padding:16px 18px;
+  border-radius:0 12px 12px 0;
+  margin:18px 0;
+  color:#e7e7e7;
+}
+.notice strong{color:#fff}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{
+  background:linear-gradient(145deg,#141414,#0b0b0b);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 18px 60px rgba(0,0,0,.22);
+}
+.card .kicker{
+  color:var(--lime);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:10px;
+  font-weight:950;
+  margin-bottom:18px;
+}
+.card h2,.card h3{margin:0 0 12px}
+.card h2{font-size:26px;line-height:1.1}
+.card h3{font-size:20px;line-height:1.15}
+.card p{color:#aaa;line-height:1.5;margin:0}
+.panel{display:none}
+.panel.active{display:block}
+table{
+  width:100%;
+  border-collapse:collapse;
+  overflow:hidden;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:#101010;
+}
+th,td{
+  border-bottom:1px solid var(--line);
+  padding:12px 14px;
+  text-align:left;
+  vertical-align:top;
+}
+th{
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#999;
+  background:#151515;
+}
+tr:last-child td{border-bottom:0}
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--line);
+  background:#090909;
+  color:#fff;
+  padding:11px 12px;
+  border-radius:12px;
+  font:inherit;
+}
+textarea{min-height:80px}
+.formgrid{
+  display:grid;
+  grid-template-columns:2.2fr 1fr 1fr 1fr 1fr;
+  gap:10px;
+  margin:12px 0;
+}
+.badge{
+  display:inline-flex;
+  padding:6px 9px;
+  border-radius:999px;
+  background:#1c1c1c;
+  border:1px solid var(--line);
+  color:#ddd;
+  font-size:12px;
+  font-weight:800;
+}
+.badge.lime{background:rgba(207,255,47,.13);border-color:rgba(207,255,47,.35);color:var(--lime)}
+.badge.red{background:rgba(255,91,104,.12);border-color:rgba(255,91,104,.35);color:#ff7d85}
+.badge.amber{background:rgba(255,200,87,.12);border-color:rgba(255,200,87,.35);color:var(--amber)}
+.flow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.step{
+  padding:13px 16px;
+  border-radius:16px;
+  border:1px solid rgba(207,255,47,.25);
+  background:rgba(207,255,47,.08);
+  font-weight:850;
+}
+.arrow{color:var(--lime);font-size:24px;font-weight:950}
+.footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);color:#777;font-size:12px}
+
+/* Welcome Guide */
+.modalBack{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+  padding:20px;
+}
+.modal{
+  width:min(960px,96vw);
+  max-height:92vh;
+  overflow:auto;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(207,255,47,.18), transparent 32%),
+    #090909;
+  border:1px solid rgba(207,255,47,.38);
+  border-radius:28px;
+  padding:30px;
+  box-shadow:0 40px 140px rgba(0,0,0,.78);
+}
+.modal h2{
+  margin:8px 0 12px;
+  font-size:42px;
+  letter-spacing:-.05em;
+  line-height:.98;
+}
+.modal h2 span{color:var(--lime)}
+.modal p{color:#b8b8b8;line-height:1.55}
+.modalGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.modalCard{
+  background:#131313;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+}
+.modalCard h3{margin:0 0 8px;font-size:17px}
+.modalActions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.small{font-size:12px;color:#999}
+@media(max-width:900px){
+  .top{flex-direction:column}
+  .stats,.grid3,.grid4,.modalGrid,.formgrid{grid-template-columns:1fr}
+}
+@media print{
+  .actions,.tabs,.modalBack{display:none!important}
+  body{background:#fff;color:#000}
+  .card,.stat,table{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div id="welcomeGuide" class="modalBack">
+  <div class="modal">
+    <div class="eyebrow">Welcome Guide · Dev Team Edition</div>
+    <h2>How to use the <span>Creator Studio Delivery OS</span></h2>
+    <p>
+      This dashboard is the operational workbook for Fashion Genius Creator Studio.
+      It keeps strategy, roadmap, sprint execution, QA, time tracking, decisions and future ideas in one place.
+    </p>
+
+    <div class="modalGrid">
+      <div class="modalCard">
+        <h3>1. Start with the Strategic Briefing</h3>
+        <p>Understand the current objective before starting work: first paying creators, mobile web experience, monetization and PMF validation.</p>
+      </div>
+      <div class="modalCard">
+        <h3>2. Work from Sprint Board + Backlog</h3>
+        <p>Add new tasks via + Task, update priority/status/actual hours and keep planned work visible for everyone.</p>
+      </div>
+      <div class="modalCard">
+        <h3>3. Use QA before Done</h3>
+        <p>No feature should be considered finished before QA review, bug check and release readiness validation.</p>
+      </div>
+      <div class="modalCard">
+        <h3>4. Keep ideas in the Innovation Vault</h3>
+        <p>Future ideas are welcome. They stay visible, but active development is limited to current sprint and milestone-based unlocks.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Current development rule:</strong>
+      Mobile-first web experience is active. Native iOS/Android app development is parked until product-market fit and usage milestones are validated.
+    </div>
+
+    <div class="modalActions">
+      <label class="small"><input type="checkbox" id="dontShowAgain"> Don’t show this guide again on this browser</label>
+      <button class="primary" onclick="closeGuide()">Got it — open dashboard</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="eyebrow">Fashion Genius · Product Delivery OS · Dev Team Edition · v2.0</div>
+      <h1>CREATOR STUDIO <span class="lime">DELIVERY OS</span></h1>
+      <div class="subtitle">
+        Operational workbook for Amir and the development team: strategic briefing, roadmap, sprint execution, time tracking, QA, bugs, decision log and innovation vault. This edition intentionally excludes MRR, fundraising, runway, cash flow and investor data.
+      </div>
+    </div>
+    <div class="actions">
+      <button class="primary" onclick="openTaskModal()">+ Task</button>
+      <button onclick="exportJSON()">Export JSON</button>
+      <label class="fileBtn">Import JSON<input type="file" accept="application/json" onchange="importJSON(event)"></label>
+      <button onclick="window.print()">Print/PDF</button>
+      <button class="danger" onclick="resetAll()">Reset</button>
+    </div>
+  </div>
+
+  <div class="pills">
+    <span class="pill active">Current Objective: First Paying Creators</span>
+    <span class="pill">Mobile Responsive Web = Active</span>
+    <span class="pill">Native Mobile App = Parked</span>
+    <span class="pill">Version 2.0 · English Only</span>
+    <button class="pill" style="cursor:pointer" onclick="openGuide()">Open Guide</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="label">Total Tasks</div><div class="num" id="totalTasks">0</div></div>
+    <div class="stat"><div class="label">Critical</div><div class="num" id="criticalTasks">0</div></div>
+    <div class="stat"><div class="label">Planned Hours</div><div class="num" id="plannedHours">0h</div></div>
+    <div class="stat"><div class="label">Actual Hours</div><div class="num" id="actualHours">0h</div></div>
+    <div class="stat"><div class="label">QA Open</div><div class="num" id="qaOpen">0</div></div>
+    <div class="stat"><div class="label">Progress</div><div class="num" id="progressPct">0%</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="briefing" onclick="showTab('briefing')">Strategic Briefing</button>
+    <button class="tab" data-tab="roadmap" onclick="showTab('roadmap')">Product Roadmap</button>
+    <button class="tab" data-tab="sprint" onclick="showTab('sprint')">Sprint Board</button>
+    <button class="tab" data-tab="backlog" onclick="showTab('backlog')">Backlog</button>
+    <button class="tab" data-tab="qa" onclick="showTab('qa')">QA Center</button>
+    <button class="tab" data-tab="time" onclick="showTab('time')">Time Tracking</button>
+    <button class="tab" data-tab="decisions" onclick="showTab('decisions')">Decision Log</button>
+    <button class="tab" data-tab="vault" onclick="showTab('vault')">Innovation Vault</button>
+    <button class="tab" data-tab="kpi" onclick="showTab('kpi')">KPI Dashboard</button>
+  </div>
+
+  <section id="briefing" class="panel active">
+    <div class="notice"><strong>Current development rule:</strong> Mobile-first web experience is active. Native iOS/Android app development is parked until product-market fit and usage milestones are validated.</div>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="kicker">Mission</div>
+        <h2>AI-native Fashion Content & Commerce Layer</h2>
+        <p>Creator Studio is not only a VTO tool. It is the content and distribution engine for Fashion Genius: creators generate looks, awareness and retailer inbound interest.</p>
+      </div>
+      <div class="card">
+        <div class="kicker">Current Priority</div>
+        <h2>Market Fit before Platform Complexity</h2>
+        <p>The next build phase must validate creator adoption, monetization readiness and mobile-first usability before larger platform investments.</p>
+      </div>
+      <div class="card">
+        <div class="kicker">Team Principle</div>
+        <h2>Vision Visible · Scope Controlled</h2>
+        <p>Future ideas stay visible in the Innovation Vault, but active development is limited to the current sprint and milestone-based unlocks.</p>
+      </div>
+    </div>
+
+    <div class="grid4" style="margin-top:14px">
+      <div class="card"><h3>YES: Mobile Responsive Web App</h3><p>Mobile upload, mobile try-on, mobile results, mobile export and mobile payment must work smoothly in browser.</p></div>
+      <div class="card"><h3>YES: Monetization First</h3><p>Plans, usage limits, watermark logic and upgrade flow are needed to validate first paying creators.</p></div>
+      <div class="card"><h3>NO: Native App Now</h3><p>No iOS/Android app, no App Store, no push notifications and no in-app purchases before PMF.</p></div>
+      <div class="card"><h3>NO: Overbuilding</h3><p>Advanced marketplace, deep analytics and Fashion OS features remain parked until clear usage and business signals exist.</p></div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="panel">
+    <div class="grid4">
+      <div class="card"><span class="badge lime">Complete</span><h3>Phase 1 · Web MVP</h3><p>Authentication, upload, VTO, libraries, collections, results and infrastructure.</p></div>
+      <div class="card"><span class="badge lime">Active</span><h3>Phase 1.5 · Mobile Web + Monetization</h3><p>Responsive mobile UX, Stripe, creator plans, credits, watermark and usage limits.</p></div>
+      <div class="card"><span class="badge amber">Next</span><h3>Phase 2 · Creator Growth</h3><p>Onboarding, profiles, saved looks, social export and referral foundations.</p></div>
+      <div class="card"><span class="badge red">Parked</span><h3>Phase 3+ · Platform Expansion</h3><p>Native app, marketplace, retailer matching and Fashion Identity Layer are future unlocks.</p></div>
+    </div>
+  </section>
+
+  <section id="sprint" class="panel">
+    <div class="card">
+      <h2>Active Sprint Board</h2>
+      <p>Work planned for the next build cycle. Update actual hours and status as work progresses.</p>
+    </div>
+    <table>
+      <thead><tr><th>Task</th><th>Area</th><th>Priority</th><th>Status</th><th>Planned</th><th>Actual</th><th>Owner</th><th>QA</th><th>Actions</th></tr></thead>
+      <tbody id="sprintRows"></tbody>
+    </table>
+  </section>
+
+  <section id="backlog" class="panel">
+    <div class="card">
+      <h2>Backlog</h2>
+      <p>Add future work, feature improvements and technical debt here. Backlog items are not active until moved into Sprint Board.</p>
+      <div class="formgrid">
+        <input id="newTask" placeholder="Task / feature">
+        <select id="newArea"><option>Frontend</option><option>Backend</option><option>QA</option><option>Product</option><option>Business</option><option>Infra</option></select>
+        <select id="newPriority"><option>Critical</option><option>High</option><option>Medium</option><option>Low</option><option>Future</option></select>
+        <input id="newOwner" placeholder="Owner">
+        <input id="newHours" type="number" min="0" placeholder="Planned h">
+      </div>
+      <button class="primary" onclick="addTask()">Add to Backlog</button>
+    </div>
+    <table>
+      <thead><tr><th>Task</th><th>Area</th><th>Priority</th><th>Status</th><th>Planned</th><th>Owner</th><th>Actions</th></tr></thead>
+      <tbody id="backlogRows"></tbody>
+    </table>
+  </section>
+
+  <section id="qa" class="panel">
+    <div class="card"><h2>QA Center</h2><p>Acceptance gate before production release.</p></div>
+    <table>
+      <thead><tr><th>Feature</th><th>Acceptance Criteria</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Mobile Upload</td><td>Upload from camera/gallery, validation, preview, error handling</td><td><span class="badge amber">Pending</span></td></tr>
+        <tr><td>Stripe Payment</td><td>Checkout, success, failure, cancellation, plan update</td><td><span class="badge amber">Pending</span></td></tr>
+        <tr><td>Watermark Logic</td><td>Free shows watermark, paid removes watermark</td><td><span class="badge amber">Pending</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="time" class="panel">
+    <div class="card"><h2>Time Tracking</h2><p>Use planned vs actual hours to improve future sprint estimates.</p></div>
+    <table>
+      <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Planned Hours</td><td id="plannedHoursTable">0h</td></tr>
+        <tr><td>Actual Hours</td><td id="actualHoursTable">0h</td></tr>
+        <tr><td>Open QA Items</td><td id="qaOpenTable">0</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="decisions" class="panel">
+    <div class="card">
+      <h2>Decision Log</h2>
+      <p><strong>Decision:</strong> Native mobile app is postponed. <br><strong>Reason:</strong> Mobile responsive web app is sufficient for PMF validation and much faster to ship.</p>
+    </div>
+  </section>
+
+  <section id="vault" class="panel">
+    <table>
+      <thead><tr><th>Future Idea</th><th>Status</th><th>Unlock Condition</th></tr></thead>
+      <tbody>
+        <tr><td>Native Mobile App</td><td><span class="badge red">Parked</span></td><td>PMF validated + Product Lead approval</td></tr>
+        <tr><td>Creator Marketplace</td><td><span class="badge red">Locked</span></td><td>Creator and retailer demand validated</td></tr>
+        <tr><td>Fashion Identity Layer</td><td><span class="badge amber">Vision</span></td><td>Network effects and repeat usage</td></tr>
+        <tr><td>Advanced AI Editing</td><td><span class="badge amber">Future</span></td><td>After monetization and mobile core are stable</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="kpi" class="panel">
+    <div class="grid3">
+      <div class="card"><h3>Product KPIs</h3><p>Registered users, active creators, generated VTOs, exports, error rate and uptime.</p></div>
+      <div class="card"><h3>Quality KPIs</h3><p>Bug rate, QA open items, release readiness and failed generation rate.</p></div>
+      <div class="card"><h3>Delivery KPIs</h3><p>Sprint completion, actual vs planned hours and delivery velocity.</p></div>
+    </div>
+  </section>
+
+  <div class="footer">Fashion Genius Technology Lab AG · Internal Dev Team Workspace · No financial or fundraising data included.</div>
+</div>
+
+<div id="taskModal" class="modalBack" style="display:none">
+  <div class="modal">
+    <div class="eyebrow">Add Task</div>
+    <h2>New task</h2>
+    <div class="formgrid" style="grid-template-columns:2fr 1fr 1fr">
+      <input id="modalTask" placeholder="Task / feature">
+      <select id="modalArea"><option>Frontend</option><option>Backend</option><option>QA</option><option>Product</option><option>Business</option><option>Infra</option></select>
+      <select id="modalPriority"><option>Critical</option><option>High</option><option>Medium</option><option>Low</option><option>Future</option></select>
+    </div>
+    <div class="formgrid" style="grid-template-columns:1fr 1fr 1fr">
+      <input id="modalOwner" placeholder="Owner">
+      <input id="modalHours" type="number" min="0" placeholder="Planned h">
+      <select id="modalStatus"><option>Backlog</option><option>Sprint</option></select>
+    </div>
+    <div class="modalActions">
+      <button onclick="document.getElementById('taskModal').style.display='none'">Cancel</button>
+      <button class="primary" onclick="addModalTask()">Add task</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STORE_KEY = "fg_creator_studio_delivery_os_v2_reconstructed";
+const defaultTasks = [
+  {task:"Mobile Responsive UX Audit",area:"Frontend",priority:"Critical",status:"Sprint",planned:6,actual:0,owner:"Dev Team",qa:"Open"},
+  {task:"Mobile Upload Flow",area:"Frontend",priority:"Critical",status:"Sprint",planned:8,actual:0,owner:"Dev Team",qa:"Open"},
+  {task:"Mobile Try-On + Results Flow",area:"Frontend",priority:"Critical",status:"Sprint",planned:8,actual:0,owner:"Dev Team",qa:"Open"},
+  {task:"Stripe Integration",area:"Backend",priority:"Critical",status:"Sprint",planned:12,actual:0,owner:"Amir / Backend",qa:"Open"},
+  {task:"Creator Subscription Plans",area:"Backend",priority:"Critical",status:"Sprint",planned:8,actual:0,owner:"Backend",qa:"Open"},
+  {task:"Usage Limits",area:"Backend",priority:"Critical",status:"Sprint",planned:6,actual:0,owner:"Backend",qa:"Open"},
+  {task:"Watermark Logic",area:"Frontend",priority:"Critical",status:"Sprint",planned:5,actual:0,owner:"Frontend",qa:"Open"},
+  {task:"Upgrade Flow / Paywall",area:"Product",priority:"High",status:"Sprint",planned:7,actual:0,owner:"Product + FE",qa:"Open"},
+  {task:"Creator Onboarding Flow",area:"Product",priority:"High",status:"Backlog",planned:8,actual:0,owner:"Product + FE",qa:"Open"},
+  {task:"TikTok / Instagram Export Presets",area:"Frontend",priority:"High",status:"Backlog",planned:6,actual:0,owner:"Frontend",qa:"Open"},
+  {task:"Native Mobile App",area:"Future",priority:"Future",status:"Parked",planned:0,actual:0,owner:"Not assigned",qa:"Locked"}
+];
+
+function load(){
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || defaultTasks; }
+  catch(e){ return defaultTasks; }
+}
+function save(data){ localStorage.setItem(STORE_KEY, JSON.stringify(data)); }
+function render(){
+  const data = load();
+  const sprint = data.filter(x => x.status === "Sprint");
+  const backlog = data.filter(x => x.status !== "Sprint");
+  document.getElementById("sprintRows").innerHTML = sprint.map((x,i)=>rowHTML(x,data.indexOf(x),true)).join("");
+  document.getElementById("backlogRows").innerHTML = backlog.map((x,i)=>backlogHTML(x,data.indexOf(x))).join("");
+  updateStats(data);
+}
+function rowHTML(x,idx){
+  return `<tr>
+    <td>${esc(x.task)}</td><td>${esc(x.area)}</td><td>${badge(x.priority)}</td>
+    <td><select onchange="updateField(${idx},'status',this.value)"><option ${sel(x.status,'Sprint')}>Sprint</option><option ${sel(x.status,'Backlog')}>Backlog</option><option ${sel(x.status,'In Progress')}>In Progress</option><option ${sel(x.status,'QA')}>QA</option><option ${sel(x.status,'Done')}>Done</option><option ${sel(x.status,'Parked')}>Parked</option></select></td>
+    <td>${x.planned || 0}h</td>
+    <td><input type="number" min="0" value="${x.actual || 0}" onchange="updateField(${idx},'actual',Number(this.value))"></td>
+    <td>${esc(x.owner)}</td>
+    <td><select onchange="updateField(${idx},'qa',this.value)"><option ${sel(x.qa,'Open')}>Open</option><option ${sel(x.qa,'Pending')}>Pending</option><option ${sel(x.qa,'Passed')}>Passed</option><option ${sel(x.qa,'Failed')}>Failed</option><option ${sel(x.qa,'Locked')}>Locked</option></select></td>
+    <td><button onclick="removeTask(${idx})">Delete</button></td>
+  </tr>`;
+}
+function backlogHTML(x,idx){
+  return `<tr><td>${esc(x.task)}</td><td>${esc(x.area)}</td><td>${badge(x.priority)}</td><td>${esc(x.status)}</td><td>${x.planned || 0}h</td><td>${esc(x.owner)}</td><td><button onclick="moveToSprint(${idx})">Move to Sprint</button> <button onclick="removeTask(${idx})">Delete</button></td></tr>`;
+}
+function updateStats(data){
+  const total=data.length;
+  const critical=data.filter(x=>x.priority==="Critical").length;
+  const planned=data.reduce((s,x)=>s+(Number(x.planned)||0),0);
+  const actual=data.reduce((s,x)=>s+(Number(x.actual)||0),0);
+  const qaOpen=data.filter(x=>["Open","Pending","Failed"].includes(x.qa)).length;
+  const done=data.filter(x=>x.status==="Done").length;
+  const pct=total?Math.round(done/total*100):0;
+  setText("totalTasks",total); setText("criticalTasks",critical); setText("plannedHours",planned+"h"); setText("actualHours",actual+"h"); setText("qaOpen",qaOpen); setText("progressPct",pct+"%");
+  setText("plannedHoursTable",planned+"h"); setText("actualHoursTable",actual+"h"); setText("qaOpenTable",qaOpen);
+}
+function setText(id,v){ const el=document.getElementById(id); if(el) el.textContent=v; }
+function updateField(idx,key,value){ const data=load(); data[idx][key]=value; save(data); render(); }
+function moveToSprint(idx){ updateField(idx,"status","Sprint"); }
+function removeTask(idx){ const data=load(); data.splice(idx,1); save(data); render(); }
+function addTask(){
+  const task=document.getElementById("newTask").value.trim(); if(!task) return alert("Please enter a task.");
+  const data=load();
+  data.push({task,area:v("newArea"),priority:v("newPriority"),status:"Backlog",planned:Number(v("newHours"))||0,actual:0,owner:v("newOwner")||"TBD",qa:"Open"});
+  save(data); ["newTask","newOwner","newHours"].forEach(id=>document.getElementById(id).value=""); render();
+}
+function openTaskModal(){ document.getElementById("taskModal").style.display="flex"; }
+function addModalTask(){
+  const task=v("modalTask").trim(); if(!task) return alert("Please enter a task.");
+  const data=load();
+  data.push({task,area:v("modalArea"),priority:v("modalPriority"),status:v("modalStatus"),planned:Number(v("modalHours"))||0,actual:0,owner:v("modalOwner")||"TBD",qa:"Open"});
+  save(data); document.getElementById("taskModal").style.display="none"; ["modalTask","modalOwner","modalHours"].forEach(id=>document.getElementById(id).value=""); render();
+}
+function showTab(id){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.tab===id));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",p.id===id));
+}
+function exportJSON(){
+  const blob=new Blob([JSON.stringify(load(),null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="fashion-genius-dev-os-data.json"; a.click();
+}
+function importJSON(e){
+  const file=e.target.files[0]; if(!file) return;
+  const r=new FileReader(); r.onload=()=>{ save(JSON.parse(r.result)); render(); }; r.readAsText(file);
+}
+function resetAll(){ if(confirm("Reset dashboard data?")){ localStorage.removeItem(STORE_KEY); render(); } }
+function v(id){ return document.getElementById(id).value; }
+function esc(s){ return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])); }
+function sel(a,b){ return a===b?"selected":""; }
+function badge(p){
+  const cls=p==="Critical"?"lime":p==="Future"?"red":p==="High"?"amber":"";
+  return `<span class="badge ${cls}">${esc(p)}</span>`;
+}
+function closeGuide(){
+  if(document.getElementById("dontShowAgain").checked) localStorage.setItem("fg_dev_os_guide_hidden","true");
+  document.getElementById("welcomeGuide").style.display="none";
+}
+function openGuide(){ document.getElementById("welcomeGuide").style.display="flex"; }
+window.addEventListener("DOMContentLoaded",()=>{
+  render();
+  if(localStorage.getItem("fg_dev_os_guide_hidden")==="true") document.getElementById("welcomeGuide").style.display="none";
+});
+</script>
+</body>
+</html>
